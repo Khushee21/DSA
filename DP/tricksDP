@@ -1,0 +1,15 @@
+JBHI bhi ye scenetio ho ki you have to choose one in 2 options for miximizing value and minimizing value 
+go with DP
+
+ DP ki problems me we have 
+ 1. base condition 
+            - hmesha jo bhi problem di ho iski sbko smallest value jobhi posssible ho paye rkh ke dekho vhi base        condition h
+2.  main function 
+            - Problem solve karo by combining results of smaller subproblems.
+            - Yahan aap decision logic apply karte ho to maximize ya minimize result.
+3.  return statement
+            - Function ya DP table se computed value return karo.
+            - Ye subproblem ka result ya final answer ho sakta hai.
+
+
+***PROBLEM ko TREE ke form me build kro 

@@ -1,0 +1,40 @@
+
+WHAT WE ARE DOING IN THIS PROBLEM IS:
+
+conditions we are using:-
+
+1.   if(W <= wt[i]) 
+        {
+            return Math.max(val[i] + helper(wt , W-wt[i] , n-1 , val) , helper(wt , W , n-1 , val));
+        }
+2.    else 
+        {
+            return helper(W, val, wt, n - 1);
+        }
+
+
+
+CODE:
+
+
+class Solution {
+    static int knapsack(int W, int val[], int wt[]) {
+        int n = val.length;
+        return helper(W, val, wt, n - 1);
+    }
+
+    public static int helper(int W, int val[], int wt[], int n) {
+        if (n < 0 || W == 0) return 0;
+        if (wt[n] <= W) {
+            return Math.max(
+                val[n] + helper(W - wt[n], val, wt, n - 1),
+                helper(W, val, wt, n - 1));
+        } else {
+            return helper(W, val, wt, n - 1);
+        }
+    }
+}
+
+imp notes
+- time complexity is more - better not to use recurtion
+
