@@ -1,0 +1,47 @@
+most of the solved by bfs , dfs
+
+kab kya use karna h?
+
+
+
+2️⃣ DFS (Depth-First Search)
+
+Idea: ek path me jitna ho sake deep jao, phir backtrack karo.
+
+Use stack (recursion automatically stack use karta hai).
+
+Use cases
+
+Find connected components
+
+Detect cycles in graph
+
+Topological sort (DAG)
+
+Maze solving (go deep first)
+
+Easy analogy:
+
+Ek cave me ghus rahe ho → jitna andar ja sakte ho jao, wapas aa kar dusra path try karo.
+
+3️⃣ BFS (Breadth-First Search)
+
+Idea: ek level pe saare neighbors visit karo, phir next level.
+
+Use queue.
+
+Use cases
+
+Shortest path in unweighted graph
+
+Level order traversal
+
+Connected components (similar to DFS)
+
+Minimum steps problems
+
+Easy analogy:
+
+Tumhara friend ek party me hai, sab first floor ke log milne jao, phir second floor, phir third → level by level.
+
+

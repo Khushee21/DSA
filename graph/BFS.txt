@@ -1,0 +1,29 @@
+1. use Queue
+2. visited array
+3. use one function
+
+
+public List<Integer> bfsOfGraph(int V, List<List<Integer>> adj) {
+        boolean[] visited = new boolean[V];
+        Queue<Integer> queue=new LinkedList<>();
+        List<Integer> list=new ArrayList<>();
+        for(int i=0 ;i<V;i++){
+          if(!visited[i]){
+            queue.add(i);
+            visited[i] = true;
+           
+           while(!queue.isEmpty()){
+               int node = queue.poll();
+               list.add(node);
+               for(int j=0 ;j<adj.get(node).size() ;j++){
+                int neigh = adj.get(node).get(j);
+                   if(!visited[neigh]){
+                      queue.add(neigh);
+                      visited[neigh] = true;
+                    }
+               }
+            }
+          }
+        }
+        return list;
+    }

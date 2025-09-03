@@ -1,0 +1,24 @@
+In the base subset sum problem generally we have Given
+- an array
+- size of arrray
+- sum 
+- we have to return : array me koi esa subset hai jiska sum hmare given sum ke brabar ho?
+
+int dp[][]=new int[]
+
+BASE CONDITIONS
+- agar array ki empty ho or sum me value ho to it will return false ;
+- agar sum hi 0 ho to it will return empty subset which is possible so it will return true ;
+
+MAIN CONDITION
+for(int i=1 ;i<=n ;i++){
+    for(int j=1 ;j<=sum ;j++){
+        if(arr[i-1]<=j){
+            dp[i][j]= dp[i-1][j-arr[i-1]];
+        }
+        else{
+            dp[i][j]=dp[i-1][j];
+        }
+    }
+}
+return dp[n][sum];

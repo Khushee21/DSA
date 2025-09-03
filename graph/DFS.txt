@@ -1,0 +1,31 @@
+1. use stack
+2. recursion
+3. 2 functions use hoge
+4. visited array to track each element
+
+
+ public List<Integer> dfsOfGraph(int V, List<List<Integer>> adj) {
+      boolean visited[]=new boolean[V];
+      List<Integer> list=new ArrayList<>();
+
+      for(int i=0 ;i<V ;i++){
+        if(!visited[i]){
+           helperDfs(visited , adj , list , i);
+        }
+      }
+      return list;
+    }
+
+
+    
+    public void helperDfs(boolean visited[] , List<List<Integer>> adj , List<Integer> list , int i ){
+      visited[i]=true;
+      list.add(i);
+
+      for(int j=0 ; j<adj.get(i).size() ;j++){
+        int negh=adj.get(i).get(j);
+        if(!visited[negh]){
+           helperDfs(visited , adj , list , negh);
+        }
+      }
+    }

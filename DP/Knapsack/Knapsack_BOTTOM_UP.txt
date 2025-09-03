@@ -7,6 +7,12 @@ twist is - hum yha ek 2D array me values store krege , and last block me jo valu
 how?
 LET'S SEE
 
+
+BASE CONDITIONS ---
+agar item =0 ho to bag me kitni bhi capacity jo value ja ni skti  ISLY i==0 
+agar capacity 0 he to kitne bhi item ho place ni kr skte ISLY j==0
+
+
 int dp[][]=new int [n+1][W+1];
 
 fill dp with -1
