@@ -1,0 +1,60 @@
+Given a string s, find the length of the longest substring without duplicate characters.
+
+ 
+
+Example 1:
+
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+Example 2:
+
+Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+Example 3:
+
+Input: s = "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3.
+Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+ 
+
+Constraints:
+
+0 <= s.length <= 5 * 104
+s consists of English letters, digits, symbols and spaces.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SOLUTION
+__________
+
+
+class Solution 
+{
+    public int lengthOfLongestSubstring(String s) 
+    {
+        Set<Character> visited = new HashSet<>();  // Set to track the characters in the current window
+        int i = 0, j = 0, res = 0;  // Pointers for the sliding window and result
+
+        while (j < s.length()) 
+        {
+            // If the character is not in the set, add it and move the right pointer (j)
+            if (!visited.contains(s.charAt(j))) 
+            {
+                visited.add(s.charAt(j));
+                res = Math.max(res, j - i + 1);  // Update the result with the current window length
+                j++;  // Expand the window
+            } 
+            // If the character is already in the set, remove the leftmost character and move the left pointer (i)
+            else {
+                visited.remove(s.charAt(i));
+                i++;  // Shrink the window from the left
+            }
+        }
+
+        return res;
+    }
+}
