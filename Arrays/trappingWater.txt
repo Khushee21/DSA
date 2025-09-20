@@ -19,6 +19,8 @@ Constraints:
 
 
 
+
+
 class Solution {
     public int maxWater(int arr[]) {
         int max=arr[0];
