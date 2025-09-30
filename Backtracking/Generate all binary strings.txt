@@ -1,0 +1,38 @@
+Given an integer n. You need to generate all the binary strings of n characters representing bits.
+
+Note: Return the strings in  ascending order.
+
+Examples:
+
+Input: n = 2
+Output: [00, 01, 10, 11]
+Explanation: As each position can be either 0 or 1, the total possible combinations are 4.
+
+
+Input: n = 3
+Output: [000, 001, 010, 011, 100, 101, 110, 111]
+Explanation: As each position can be either 0 or 1, the total possible combinations are 8.
+Constraints:
+1 ≤ n ≤ 20
+
+----------------------------------------------------------------------------------------------------
+
+SOLUTION__________________
+
+
+class Solution {
+    public ArrayList<String> binstr(int n) {
+        ArrayList<String> list = new ArrayList<>();
+        helper(n, "", list);
+        return list;
+    }
+
+    private void helper(int n, String sb, ArrayList<String> list) {
+        if (sb.length() == n) {
+            list.add(sb);
+            return;
+        }
+        helper(n, sb + "0", list);
+        helper(n, sb + "1", list);
+    }
+}
