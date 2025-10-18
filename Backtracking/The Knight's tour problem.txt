@@ -1,0 +1,97 @@
+You are given a n × n chessboard with a Knight starting at the top-left corner (0, 0). Your task is to determine a valid Knight's Tour,
+ where the Knight visits every square exactly once, following the standard movement rules of a chess Knight.
+
+You have to return the order in which each cell is visited. If a solution exists, print the sequence of numbers representing the order of
+ visited squares. If no solution is possible, return -1.
+
+Note: You can return any valid ordering, if it is correct the driver code will print true else it will print false.
+
+Examples:
+
+Input: n = 5
+Output: true
+
+Explanation: A possible Knight's Tour in a 5x5 chessboard is given below where Each number represents the step at which the Knight 
+visits that cell, starting from (0, 0) as step 0.
+[[0, 11, 2, 17, 20],
+ [3, 16, 19, 12, 7],
+ [10, 1, 6, 21, 18],
+ [15, 4, 23, 8, 13], 
+ [24, 9, 14, 5, 22]]
+
+
+Input: n = 4
+Output: true
+Explanation: For n = 4, it is not possible for a valid Knight's Tour so you have to return -1.
+Constraints:
+1 ≤ n ≤ 6
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+SOLUTION__________________
+
+class Solution {
+    int[] dx = {2, 1, -1, -2, -2, -1, 1, 2};
+    int[] dy = {1, 2, 2, 1, -1, -2, -2, -1};
+    int[][] ans;
+    boolean solved = false;
+
+    public ArrayList<ArrayList<Integer>> knightTour(int n) {
+        ans = new int[n][n];
+
+        for (int[] row : ans) {
+            Arrays.fill(row, -1);
+        }
+
+        ans[0][0] = 0;
+
+        helper(0, 0, 1, n);
+
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+
+        if (!solved) {
+            ArrayList<Integer> noSolution = new ArrayList<>();
+            noSolution.add(-1);
+            result.add(noSolution);
+            return result;
+        }
+
+        for (int i = 0; i < n; i++) {
+            ArrayList<Integer> rowList = new ArrayList<>();
+            for (int j = 0; j < n; j++) {
+                rowList.add(ans[i][j]);
+            }
+            result.add(rowList);
+        }
+
+        return result;
+    }
+
+    private void helper(int x, int y, int step, int n) {
+        if (solved) return;
+
+        if (step == n * n) {
+            solved = true;
+            return;
+        }
+
+        for (int k = 0; k < 8; k++) {
+            int newX = x + dx[k];
+            int newY = y + dy[k];
+
+            if (isValid(newX, newY, n)) {
+                ans[newX][newY] = step;
+                helper(newX, newY, step + 1, n);
+
+                if (solved) return;
+
+                ans[newX][newY] = -1;
+            }
+        }
+    }
+
+    private boolean isValid(int x, int y, int n) {
+        return (x >= 0 && y >= 0 && x < n && y < n && ans[x][y] == -1);
+    }
+}
