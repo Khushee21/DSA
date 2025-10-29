@@ -1,0 +1,62 @@
+LINK-  https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
+
+Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. 
+Return the answer in any order.
+
+A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+
+
+ 
+
+Example 1:
+
+Input: digits = "23"
+Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+Example 2:
+
+Input: digits = "2"
+Output: ["a","b","c"]
+ 
+
+Constraints:
+
+1 <= digits.length <= 4
+digits[i] is a digit in the range ['2', '9'].
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+SOLUTION__________________
+
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        List<String> list= new ArrayList<>();
+        if(digits ==null || digits.length() ==0)  return list;
+
+        Map<Character, String> digitToLetters = new HashMap<>();
+        digitToLetters.put('2', "abc");
+        digitToLetters.put('3', "def");
+        digitToLetters.put('4', "ghi");
+        digitToLetters.put('5', "jkl");
+        digitToLetters.put('6', "mno");
+        digitToLetters.put('7', "pqrs");
+        digitToLetters.put('8', "tuv");
+        digitToLetters.put('9', "wxyz");
+
+        backtrack(digits , digitToLetters , 0 , new StringBuilder() , list);
+
+        return list;
+    }
+    public void backtrack(String digits , Map<Character, String> digitToLetters ,  int i, StringBuilder sb , List<String> list){
+        if(i==digits.length()){
+            list.add(sb.toString());
+            return ;
+        }
+        String letters= digitToLetters.get(digits.charAt(i));
+
+        for(int j=0 ;j<letters.length() ;j++){
+            sb.append(letters.charAt(j));
+            backtrack(digits , digitToLetters , i+1 , sb , list);
+            sb.deleteCharAt(sb.length()-1);
+        }
+    }
+}
